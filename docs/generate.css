@@ -1,0 +1,22 @@
+body, button, a {
+    font-size: 20px;
+    font-family: monospace;
+    background: #111;
+    color: #ddd;
+}
+input {
+    border: 1px solid #ccc;
+    font-size: inherit;
+    font-family: inherit;
+    width: 15ch;
+}
+button {
+    border: 0;
+}
+.hero {
+    display: flex;
+    min-height: 98vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

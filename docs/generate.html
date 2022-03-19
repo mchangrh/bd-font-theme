@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <title>BetterDiscord Font Theme Generator</title>
+    <head>
+        <style>
+            @import url(./generate.css);
+        </style>
+    </head>
+    <body>
+        <div class="hero">
+            <div>
+                Font Name:
+                <input id="font-name" onkeypress="enterListener(event)"></input>
+            </div>
+            <div>
+                <button id="update">Generate</button> |
+                <a id="download">Download</a>
+            </div>
+        </div>
+        <script src="./template.js"></script>
+        <script>
+            const button = document.getElementById("update")
+            button.addEventListener("click", generate)
+            function generate() {
+                const font = document.getElementById("font-name").value
+                if (font.length == 0) return;
+                const response = template.replace(/{{font}}/g, font)
+                const blob = new Blob([response], { type: 'text/css'})
+                const a = document.getElementById("download")
+                a.setAttribute("href", window.URL.createObjectURL(blob))
+                a.setAttribute("download", font+".theme.css")
+            }
+            function enterListener(event) {
+                if (event.key == "Enter") {
+                    generate()
+                } else return
+            }
+        </script>
+    </body>
+</html>
