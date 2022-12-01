@@ -16,6 +16,11 @@
                 <button id="update">Generate</button> |
                 <a id="download">Download</a>
             </div>
+            <div style="display:flex; flex-direction: row">
+                <p id="font-test">-</p>
+                <p>: </p>
+                <p id="text-test">Sphinx of black quartz, judge my vow</p>
+            </div>
         </div>
         <script src="./template.js"></script>
         <script>
@@ -24,6 +29,10 @@
             function generate() {
                 const font = document.getElementById("font-name").value
                 if (font.length == 0) return;
+                const textTest = document.getElementById("text-test")
+                textTest.style.fontFamily = font
+                const fontTest = document.getElementById("font-test")
+                fontTest.innerText = font
                 const response = template.replace(/{{font}}/g, font)
                 const blob = new Blob([response], { type: 'text/css'})
                 const a = document.getElementById("download")
